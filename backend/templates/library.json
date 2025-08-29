@@ -1,0 +1,94 @@
+[
+  {
+    "title": "SOAP Note",
+    "slug": "soap",
+    "type": "soap",
+    "description": "Subjective, Objective, Assessment, Plan",
+    "variables": [
+      "chief_complaint",
+      "hpi",
+      "ros",
+      "pex"
+    ],
+    "guideline_links": []
+  },
+  {
+    "title": "H&P Note",
+    "slug": "hp",
+    "type": "hp",
+    "description": "History and Physical Examination",
+    "variables": [
+      "pmh",
+      "psh",
+      "meds",
+      "allergies",
+      "fh",
+      "sh"
+    ],
+    "guideline_links": []
+  },
+  {
+    "title": "Progress Note",
+    "slug": "progress",
+    "type": "progress",
+    "description": "For returning patient follow-up",
+    "variables": [
+      "interim",
+      "changes",
+      "labs",
+      "imaging"
+    ],
+    "guideline_links": []
+  },
+  {
+    "title": "COPD Visit",
+    "slug": "copd",
+    "type": "condition",
+    "description": "Stable COPD visit with SOB/wheeze",
+    "variables": [
+      "fev1",
+      "o2",
+      "smoking_status"
+    ],
+    "guideline_links": [
+      "https://goldcopd.org"
+    ]
+  },
+  {
+    "title": "Diabetes Visit",
+    "slug": "dm2",
+    "type": "condition",
+    "description": "DM2 control & complications",
+    "variables": [
+      "a1c",
+      "egfr",
+      "urine_albumin"
+    ],
+    "guideline_links": [
+      "https://www.diabetes.org/"
+    ]
+  },
+  {
+    "title": "Heart Failure",
+    "slug": "chf",
+    "type": "condition",
+    "description": "Systolic/diastolic CHF follow-up",
+    "variables": [
+      "nyha",
+      "lvef",
+      "weights"
+    ],
+    "guideline_links": []
+  },
+  {
+    "title": "Asthma",
+    "slug": "asthma",
+    "type": "condition",
+    "description": "Asthma control and triggers",
+    "variables": [
+      "act_score",
+      "prn_inhaler"
+    ],
+    "guideline_links": []
+  }
+]

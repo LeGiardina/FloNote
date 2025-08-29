@@ -1,0 +1,37 @@
+:root{
+  --bg:#f7fafc;
+  --panel:#ffffff;
+  --text:#0f172a;
+  --muted:#5b6b82;
+  --brand:#3b82f6;
+  --brand-2:#8b5cf6;
+  --acc:#14b8a6;
+  --shadow:0 10px 30px rgba(2,6,23,.08);
+  --radius:16px;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;color:var(--text);background:linear-gradient(180deg,#f9fbff, #eef3ff);}
+.container{max-width:1100px;margin:0 auto;padding:40px 24px;}
+.nav{display:flex;align-items:center;justify-content:space-between;padding:18px 24px;background:var(--panel);box-shadow:var(--shadow);border-radius:12px;margin:24px auto;max-width:1100px}
+.nav .brand{display:flex;gap:10px;align-items:center;font-weight:700}
+.badge{padding:4px 10px;border-radius:999px;font-size:12px;background:linear-gradient(90deg,var(--brand),var(--brand-2));color:#fff}
+.btn{background:var(--brand);color:#fff;border:none;padding:12px 18px;border-radius:12px;font-weight:600;box-shadow:var(--shadow);cursor:pointer}
+.btn.secondary{background:#e8eeff;color:var(--brand)}
+.hero{display:grid;grid-template-columns:1.2fr .8fr;gap:32px;align-items:center}
+.card{background:var(--panel);box-shadow:var(--shadow);border-radius:var(--radius);padding:24px}
+.h1{font-size:44px;line-height:1.1;margin:0 0 10px}
+.sub{color:var(--muted);font-size:18px}
+.kp{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:16px}
+.kp .mini{padding:14px 16px;border-radius:12px;background:#f4f8ff}
+.input, select{width:100%;padding:14px 16px;border-radius:12px;border:1px solid #e6ecff;background:#fff}
+.stack{display:grid;gap:14px}
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.footer{color:var(--muted);text-align:center;padding:20px}
+.wave{height:240px;background:radial-gradient(1200px 200px at 60% -50%, #c7d2fe, transparent), radial-gradient(900px 180px at 10% -30%, #bae6fd, transparent)}
+.tag{background:#eef2ff;padding:6px 10px;border-radius:10px;color:#334155;font-size:12px}
+.toolbar{display:flex;gap:10px;flex-wrap:wrap}
+.recbtn{display:flex;align-items:center;gap:10px}
+.recbtn .dot{width:10px;height:10px;background:#ef4444;border-radius:50%;animation:pulse 1.2s infinite}
+@keyframes pulse{0%{transform:scale(1)}50%{transform:scale(1.4)}100%{transform:scale(1)}}
+.table{width:100%;border-collapse:collapse}
+.table td,.table th{padding:10px;border-bottom:1px solid #eef2ff;text-align:left}

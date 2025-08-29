@@ -1,0 +1,17 @@
+services:
+  - type: web
+    name: flonote-v2
+    env: python
+    region: oregon
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn backend.app:app --host 0.0.0.0 --port $PORT
+    autoDeploy: true
+    envVars:
+      - key: OPENAI_API_KEY
+        sync: false
+      - key: MODEL_TEXT
+        value: gpt-4o-mini
+      - key: MODEL_AUDIO
+        value: whisper-1
+      - key: ALLOW_ORIGINS
+        value: https://flonote.onrender.com,*

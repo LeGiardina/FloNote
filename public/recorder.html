@@ -1,0 +1,45 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>FloNote — New Recording</title>
+  <link rel="stylesheet" href="assets/styles.css"/>
+  <script>window.API_BASE = "";</script>
+</head>
+<body>
+  <div class="nav">
+    <div class="brand">🩺 FloNote</div>
+    <div class="toolbar">
+      <a class="btn secondary" href="index.html">Home</a>
+      <a class="btn secondary" href="dashboard.html">Dashboard</a>
+    </div>
+  </div>
+  <div class="container grid-2">
+    <div class="card stack">
+      <h2>Recorder</h2>
+      <div class="toolbar">
+        <button class="btn recbtn" onclick="startMic()"><span class="dot"></span> Start</button>
+        <button class="btn secondary" onclick="stopMic()">Stop</button>
+        <span id="recState" class="tag">Idle</span>
+      </div>
+      <textarea id="transcript" class="input" rows="8" placeholder="Dictate or paste notes..."></textarea>
+      <div class="toolbar">
+        <button class="btn" onclick="extractNote()">Extract with AI</button>
+      </div>
+    </div>
+    <div class="card stack">
+      <h2>Structured Note</h2>
+      <textarea id="subjective" class="input" rows="4" placeholder="Subjective"></textarea>
+      <textarea id="objective" class="input" rows="4" placeholder="Objective"></textarea>
+      <textarea id="assessment" class="input" rows="4" placeholder="Assessment"></textarea>
+      <textarea id="plan" class="input" rows="4" placeholder="Plan"></textarea>
+      <div class="toolbar">
+        <button class="btn secondary" onclick="exportFHIR()">Export FHIR</button>
+        <button class="btn" onclick="exportCCDA()">Export CCDA</button>
+      </div>
+    </div>
+  </div>
+  <script src="assets/app.js"></script>
+</body>
+</html>
