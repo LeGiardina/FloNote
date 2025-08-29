@@ -1,40 +1,54 @@
-# FloNote V2 — Clinical Autofill (Full‑Stack)
+# FloNote Ready (FastAPI + Vite React)
 
-Light, professional, and EMR‑ready clinical note assistant. Dictate → transcribe → structure → export (FHIR/CCDA).
+This package serves your SPA at `/` and your API at `/api/*`. It prevents the `{"detail":"Not Found"}` white screen by ensuring the frontend build is mounted and a SPA fallback is provided.
 
-## Features
-- 🎤 **Mic capture** with browser MediaRecorder
-- 🧠 **LLM extraction** (ChatGPT) → SOAP/H&P/Progress sections
-- 🧩 **Condition‑aware templates** (COPD, DM2, CHF, Asthma)
-- 📦 **Export**: FHIR Bundle (JSON) & CCDA (XML)
-- 🖥️ **Sleek UI**: light theme, responsive, drag‑and‑drop reorder
-- 🔐 Ready for SSO & role‑based auth (hooks in code)
-
-## Quick Start (Local)
+## Quickstart with Docker (recommended)
 ```bash
-python -m venv .venv && source .venv/bin/activate   # (Windows: .venv\Scripts\activate)
+docker build -t flonote-ready .
+docker run -p 8000:8000 -e OPENAI_API_KEY=sk-... flonote-ready
+# Open http://localhost:8000
+# API docs: http://localhost:8000/docs
+```
+If your platform requires a `PORT` env var, it's already honored.
+
+## Without Docker
+```bash
+# 1) Build frontend
+cd frontend
+npm ci
+npm run build
+
+# 2) Copy build to backend/app/public
+mkdir -p ../backend/app/public
+cp -r dist/* ../backend/app/public/
+
+# 3) Run the API
+cd ../backend
+python -m venv .venv && source .venv/bin/activate
 pip install -r requirements.txt
+uvicorn app.main:app --host 0.0.0.0 --port 8000
 
-# set OpenAI key
-export OPENAI_API_KEY=sk-...                         # (Windows PowerShell: $env:OPENAI_API_KEY="...")
-
-# run api
-uvicorn backend.app:app --reload
+# Visit http://localhost:8000/
 ```
 
-Open `public/index.html` in your browser for the landing/UX. API defaults to `http://localhost:8000`.
+## Structure
+```
+backend/
+  app/
+    main.py           # FastAPI app; mounts SPA + /api routes
+    public/           # (filled by Vite build)
+  requirements.txt
 
-## Deploy to Render
-- **Build command:** `pip install -r requirements.txt`
-- **Start command:** `uvicorn backend.app:app --host 0.0.0.0 --port $PORT`
-- **Env:** `OPENAI_API_KEY` (required for live extraction)
-
-## Endpoints
-- `POST /api/extract` → `{ transcript, demographics?, problems? }` → structured note
-- `POST /api/export/fhir` → FHIR Bundle (JSON)
-- `POST /api/export/ccda` → CCDA (XML)
-- `GET /api/templates` / `POST /api/templates` → manage templates
+frontend/
+  index.html
+  src/
+    main.jsx
+    App.jsx
+  package.json
+  vite.config.js
+```
 
 ## Notes
-- This sample uses OpenAI's `Responses` API format when available, and falls back to a rule‑based parser if no key is present (for demos).
-- Replace stub auth with your SSO/IDP (Okta/Auth0) when going live.
+- Client code calls `/api/health` to verify connectivity.
+- SPA fallback serves `index.html` for unknown paths (client-side routing).
+- If `/` returns `Frontend not built yet`, you skipped the build/copy step.
